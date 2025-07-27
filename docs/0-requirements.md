@@ -2,17 +2,17 @@
 
 ## Identified Problem or Need
 
-Replace this text with a clearly stated problem or need that exists that your project will attempt to solve / fulfil.
+Councils now require producer statements to be issued prior to product being produced, often when consent is first applied for. Architects specifying product require easy access to documents with product details and correct documentation. This currently takes time and effort from both the architect and myself leading to loss of sales as other companies make it easier.
 
 
 ## End-User Requirements
 
-Replace this text with a description of your typical end-users and their specific needs / expectations / requirements.
+end users will typically be architects, they will need obvious direction, ease of access to the form and everything required.
 
 
 ## Proposed Solution
 
-Replace this text with a brief statement about the system that you intend to create, including the key functionality it should have.
+make a web app that allows architects to input their choices into a form and then automatically create the document and give it to the end users that require it
 
 
 ---
