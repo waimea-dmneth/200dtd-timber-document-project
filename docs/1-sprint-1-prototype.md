@@ -12,10 +12,13 @@ Develop a prototype that simulates the key functionality of the system, then tes
 
 ## Initial Database Design
 
-Replace this text with notes regarding the DB design.
+This is the first iteration of the planned database, done without much thought and to give a basis and idea of what to do
 
-![SCREENSHOT OF DB DESIGN](screenshots/example.png)
+![SCREENSHOT OF DB DESIGN](screenshots/initialDB.png)
 
+after showing the first figma prototype to the end user, they told me that the field of timber grade isnt nessecary since it will nearly always be weatherboard.
+
+![SCREENSHOT OF DB DESIGN](screenshots/noGradesDB.png)
 
 ---
 
@@ -24,8 +27,16 @@ Replace this text with notes regarding the DB design.
 The first stage of prototyping was to explore how the UI might 'flow' between states, based on the required functionality.
 
 This Figma demo shows the initial design for the UI 'flow':
+there are 3 different initial designs all with different flow
 
-**FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT**
+1st:
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="380" height="600" src="https://embed.figma.com/proto/IlrMLwNlUWTdx1GqDgR2E4/Prototype-1?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=1-2&starting-point-node-id=1%3A2&embed-host=share" allowfullscreen></iframe>
+
+2nd:
+
+
+3rd:
+
 
 ### Testing
 
