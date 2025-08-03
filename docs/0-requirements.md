@@ -14,6 +14,11 @@ end users will typically be architects, they will need obvious direction, ease o
 
 make a web app that allows architects to input their choices into a form and then automatically create the document and give it to the end users that require it
 
+- needs to take input from end user
+- creates a doc PDF file based on a form that is submitted
+- emails it or stores it safely
+- needs to give both parties the pdf
+- needs to looks nice
 
 ---
 
@@ -35,7 +40,7 @@ i need to make sure i dont make the pdf's accessible to anyone who opens the web
 
 ## accessibility implications
 
-Replace this text with a clear explanation of what the implication means.
+Everyone can use it on any device
 
 ### Relevance to the System
 
@@ -86,5 +91,4 @@ Replace this text with an explanation of why the implication is relevant to this
 ### Impact / Considerations
 
 Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
-
 

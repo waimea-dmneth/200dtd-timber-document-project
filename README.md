@@ -7,13 +7,13 @@ by David Neth
 
 ## Project Description
 
-gets a form from an architect that translate into a pdf legal document for the specified timber.
+This project covers the development of a system that gets a form from an architect that translate into a pdf legal document for the specified timber.
 
-- Feature 1 here
-- Feature 2 here
-- Feature 3 here
-- Feature 4 here
-- Feature 5 here
+- needs to take input from end user
+- creates a doc PDF file based on a form that is submitted
+- emails it or stores it safely
+- needs to give both parties the pdf
+- needs to looks nice
 
 
 ---
