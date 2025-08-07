@@ -32,7 +32,7 @@ there are 3 different initial designs all with different flow
  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="380" height="600" src="https://embed.figma.com/proto/St4EE3GtJU6dpXOuYWTuBT/Prototype-2?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=0-3&embed-host=share" allowfullscreen></iframe>
 
 3rd:
- <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="400" height="700" src="https://embed.figma.com/proto/WUgYBRL0ROe14WUAclmIBV/Prototype-3?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=18-2&embed-host=share" allowfullscreen></iframe>
+ <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="400" height="800" src="https://embed.figma.com/proto/WUgYBRL0ROe14WUAclmIBV/Prototype-3?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=18-2&embed-host=share" allowfullscreen></iframe>
 
 ### Testing
 
@@ -57,7 +57,9 @@ i went through and fixed the problems such as
 
  - new DB with grade field removed, also ordered it around differently:
 ![SCREENSHOT OF DB DESIGN](screenshots/noGradesDB.png)
----
+## further testing
+
+they said it was good, and there was nothing wrong with it
 
 ## Initial UI Prototype
 
@@ -65,7 +67,8 @@ The next stage of prototyping was to develop the layout for each screen of the U
 
 This Figma demo shows the initial layout design for the UI:
 
-*FIGMA PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="380" height="700" src="https://embed.figma.com/proto/tgiFFL1hWtBSQKogdKkLn1/Prototype-3-V3?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=18-2&embed-host=share" allowfullscreen></iframe>
+
 
 ### Testing
 
@@ -84,9 +87,17 @@ Replace this text with notes any improvements you made as a result of the testin
 
 Having established the layout of the UI screens, the prototype was refined visually, in terms of colour, fonts, etc.
 
+Colors:
+
+- [Palette 1 Link](https://www.realtimecolors.com/?colors=ffffff-000000-232323-a14c1b-ffffff&fonts=Noto%20Sans%20Armenian-Noto%20Sans%20Armenian)
+- [Palette 2 Link](https://www.realtimecolors.com/?colors=ffffff-242424-b86200-413422-ffffff&fonts=Noto%20Sans%20Armenian-Noto%20Sans%20Armenian)
+
+![Palette1](screenshots/palette1.png)
+![Palette2](screenshots/palette2.png)
+
 This Figma demo shows the UI with refinements applied:
 
-*FIGMA REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+*FIGMA IMPROVED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
 
 ### Testing
 
