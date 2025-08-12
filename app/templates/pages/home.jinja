@@ -10,18 +10,35 @@
 
 {% block title %}
 
-    Flask Demo
+    Totally Timber - Form Home
 
 {% endblock %}
 
 
 {% block content %}
+    <h1> Timber </h1>
+    <h1>Consent Document Form</h1>
+    <h4>Timber Specifications</h4>
+    <div>
+        <form>
+            <h2>choose timber species</h2>
+            <select id="myDropdown" name="species">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3" selected>Option 3 (Default)</option>
+            </select>
+            <h2>choose timber profile</h2>
+                <select id="myDropdown" name="species">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3" selected>Option 3 (Default)</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <img> <a href="/details/">submit</a>
+    </div>
 
-    <form>
-        <h2>choose timber</h2>
-        <input> 
-        <h2>choose profile</h2>
-    </form>
 
 
 {% endblock %}

@@ -36,9 +36,9 @@ def index():
 #-----------------------------------------------------------
 # About page route
 #-----------------------------------------------------------
-@app.get("/about/")
+@app.get("/details/")
 def about():
-    return render_template("pages/about.jinja")
+    return render_template("pages/details.jinja")
 
 
 #-----------------------------------------------------------
