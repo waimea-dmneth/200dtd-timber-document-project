@@ -34,11 +34,18 @@ def index():
 
 
 #-----------------------------------------------------------
-# About page route
+# details page route
 #-----------------------------------------------------------
 @app.get("/details/")
-def about():
+def details():
     return render_template("pages/details.jinja")
+
+#-----------------------------------------------------------
+# confirmation page route
+#-----------------------------------------------------------
+@app.get("/confirmation/")
+def confirm():
+    return render_template("pages/confirmation.jinja")
 
 
 #-----------------------------------------------------------
@@ -60,23 +67,23 @@ def show_all_things():
 #-----------------------------------------------------------
 # Thing page route - Show details of a single thing
 #-----------------------------------------------------------
-@app.get("/thing/<int:id>")
-def show_one_thing(id):
-    with connect_db() as client:
-        # Get the thing details from the DB
-        sql = "SELECT id, name, price FROM things WHERE id=?"
-        params = [id]
-        result = client.execute(sql, params)
+# @app.get("/thing/<int:id>")
+# def show_one_thing(id):
+#     with connect_db() as client:
+#         # Get the thing details from the DB
+#         sql = "SELECT id, name, price FROM things WHERE id=?"
+#         params = [id]
+#         result = client.execute(sql, params)
 
-        # Did we get a result?
-        if result.rows:
-            # yes, so show it on the page
-            thing = result.rows[0]
-            return render_template("pages/thing.jinja", thing=thing)
+#         # Did we get a result?
+#         if result.rows:
+#             # yes, so show it on the page
+#             thing = result.rows[0]
+#             return render_template("pages/thing.jinja", thing=thing)
 
-        else:
-            # No, so show error
-            return not_found_error()
+#         else:
+#             # No, so show error
+#             return not_found_error()
 
 
 #-----------------------------------------------------------
