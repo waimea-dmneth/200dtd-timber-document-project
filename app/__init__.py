@@ -7,6 +7,7 @@
 
 from flask import Flask, render_template, request, flash, redirect
 import html
+import io
 
 from app.helpers.session import init_session
 from app.helpers.db      import connect_db
@@ -30,7 +31,22 @@ init_datetime(app)  # Handle UTC dates in timestamps
 #-----------------------------------------------------------
 @app.get("/")
 def index():
-    return render_template("pages/home.jinja")
+    with connect_db() as client:
+        # Get all the things from the DB
+        sql = "SELECT * FROM Profile"
+        params = []
+        results = client.execute(sql, params).rows
+
+        profiles = []
+        for row in results:
+            img_data = io.BytesIO(row['pic'])
+            profiles.append({
+                'profile': row['profile'],
+                'pic': img_data
+            })
+        print(profiles)
+
+        return render_template("pages/home.jinja", profiles = profiles)
 
 
 #-----------------------------------------------------------
@@ -51,7 +67,7 @@ def confirm():
 #-----------------------------------------------------------
 # Things page route - Show all the things, and new thing form
 #-----------------------------------------------------------
-@app.get("/things/")
+@app.get("/docs/")
 def show_all_things():
     with connect_db() as client:
         # Get all the things from the DB
@@ -61,7 +77,7 @@ def show_all_things():
         things = result.rows
 
         # And show them on the page
-        return render_template("pages/things.jinja", things=things)
+        return render_template("pages/docs.jinja", things=things)
 
 
 #-----------------------------------------------------------
