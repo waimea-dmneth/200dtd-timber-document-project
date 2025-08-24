@@ -5,7 +5,7 @@
 # BRIEF DESCRIPTION OF YOUR PROJECT HERE
 #===========================================================
 
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, send_file
 import html
 import io
 
@@ -24,6 +24,15 @@ init_session(app)   # Setup a session for messages, etc.
 init_logging(app)   # Log requests
 init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
+
+@app.get("/profile_image/<int:profile_id>")
+def profile_image(profile_id):
+    with connect_db() as client:
+        sql = "SELECT pic FROM Profile WHERE profile = %s"
+        result = client.execute(sql, [profile_id]).fetchone()
+        if result:
+            return send_file(io.BytesIO(result['pic']), mimetype='image/png')
+        return "Not Found", 404
 
 
 #-----------------------------------------------------------

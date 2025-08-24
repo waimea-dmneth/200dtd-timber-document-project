@@ -22,38 +22,37 @@
     <div>
         <form>
             <h2>choose timber species</h2>
-            <select id="myDropdown" name="timber">
+            <select name="timber">
                 <option value="option1">macrocarpa</option>
                 <option value="option2">walnut</option>
                 <option value="option3">redwood</option>
                 <option value="option3">pine</option>
             </select>
             <h2>Choose timber profile</h2>
-            <select id="myDropdown" name="species">
+            <select id="speciesDropdown" name="species">
                 {% for profile in profiles %}
                     <option value="{{ profile.profile }}">{{ profile.profile }}</option>
                 {% endfor %}
             </select>
 
             <div>
-                <img src="" id="pImg" alt="Profile image" style="margin-top: 20px; max-width: 300px;">
+                <img src="/profile_image/{{ profile.id }}" alt="{{ profile }}" id="pImg">
             </div>
 
             <script>
                 const profilePics = {
-                {% for profile in profiles %}
-                    "{{ profile.profile }}": "{{ profile.pic }}",
-                {% endfor %}
+                    {% for profile in profiles %}
+                        "{{ profile.profile }}": "{{ profile.pic }}",
+                    {% endfor %}
                 };
 
-                const dropdown = document.getElementById('myDropdown');
-                const output = document.getElementById('pImg');
+                const dropdown = document.getElementById('speciesDropdown');
+                const img = document.getElementById('pImg');
 
                 dropdown.addEventListener('change', () => {
-                    const selectedValue = dropdown.value;
-                    output.src = profilePics[selectedValue] || '';
                 });
             </script>
+
 
             <a href="/details/" role="button">submit</a>
                 
