@@ -36,21 +36,28 @@
             </select>
 
             <div>
-                <img src="/profile_image/{{ profile.id }}" alt="{{ profile }}" id="pImg">
+                <img src="" alt="{{ profile }}" id="pImg">
             </div>
 
             <script>
-                const profilePics = {
-                    {% for profile in profiles %}
-                        "{{ profile.profile }}": "{{ profile.pic }}",
-                    {% endfor %}
-                };
 
                 const dropdown = document.getElementById('speciesDropdown');
                 const img = document.getElementById('pImg');
 
                 dropdown.addEventListener('change', () => {
+                    const selectedValue = dropdown.value; 
+                    const profileId = "/profile_image/" + selectedValue
+                     fetch(profileId)
+                    .then(res => res.json())
+                    .then(data => {
+                    img.src = data.image;
+                    img.alt = selectedValue
+                    });
+                    
                 });
+
+               
+
             </script>
 
 
