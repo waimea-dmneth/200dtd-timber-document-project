@@ -16,53 +16,47 @@
 
 
 {% block content %}
-    <h1> Timber </h1>
+    <h2> Timber </h2>
     <h1>Consent Document Form</h1>
-    <h4>Timber Specifications</h4>
+    <p>Timber Specifications</p>
     <div>
-        <form>
-            <h2>choose timber species</h2>
-            <select name="timber">
-                <option value="option1">macrocarpa</option>
-                <option value="option2">walnut</option>
-                <option value="option3">redwood</option>
-                <option value="option3">pine</option>
+        <form action="/pageSubmit/" method="post">
+            <h4>choose timber species</h4>
+            <select name="species">
+                <option value="macrocarpa">macrocarpa</option>
+                <option value="walnut">walnut</option>
+                <option value="redwood">redwood</option>
+                <option value="pine">pine</option>
             </select>
-            <h2>Choose timber profile</h2>
-            <select id="speciesDropdown" name="species">
+            <h4>Choose timber profile</h4>
+            <select id="speciesDropdown" name="profile">
                 {% for profile in profiles %}
                     <option value="{{ profile.profile }}">{{ profile.profile }}</option>
                 {% endfor %}
             </select>
+            <div id="sideby">
+                <img src="/app/static/images/profile.png" alt="{{ profile }}" id="pImg">
 
-            <div>
-                <img src="" alt="{{ profile }}" id="pImg">
-            </div>
+                <script>
+                    const dropdown = document.getElementById('speciesDropdown');
+                    const img = document.getElementById('pImg');
 
-            <script>
-
-                const dropdown = document.getElementById('speciesDropdown');
-                const img = document.getElementById('pImg');
-
-                dropdown.addEventListener('change', () => {
-                    const selectedValue = dropdown.value; 
-                    const profileId = "/profile_image/" + selectedValue
-                     fetch(profileId)
-                    .then(res => res.json())
-                    .then(data => {
-                    img.src = data.image;
-                    img.alt = selectedValue
+                    dropdown.addEventListener('change', () => {
+                        const selectedValue = dropdown.value; 
+                        const profileId = "/profile_image/" + selectedValue
+                        fetch(profileId)
+                        .then(res => res.json())
+                        .then(data => {
+                        img.src = data.image;
+                        img.alt = selectedValue
+                        });
+                        
                     });
-                    
-                });
-
-               
-
-            </script>
+                </script>
 
 
-            <a href="/details/" role="button">submit</a>
-                
+                <button id="submit" type="submit">submit</button>
+            </div>   
         </form>
     </div>
 

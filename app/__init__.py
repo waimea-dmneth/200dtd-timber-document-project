@@ -25,6 +25,7 @@ init_logging(app)   # Log requests
 init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
+formData = {"species":"", "profile":""}
 #-----------------------------------------------------------
 # Send Img
 #-----------------------------------------------------------
@@ -54,15 +55,25 @@ def index():
         sql = "SELECT profile FROM Profile"
         params = []
         results = client.execute(sql, params).rows
-        return render_template("pages/home.jinja", profiles = results)
 
+        selected = {"",""}
+        if formData["species"] or formData["profile"]: selected = {formData["species"], formData["profile"]}
+        return render_template("pages/home.jinja", profiles = results, selected = selected)
+
+
+@app.post("/pageSubmit/")
+def submit():
+    formData["species"] = request.form.get("species")
+    formData["profile"] = request.form.get("profile")
+
+    return redirect("/details/")
 
 #-----------------------------------------------------------
 # details page route
 #-----------------------------------------------------------
 @app.get("/details/")
 def details():
-    return render_template("pages/details.jinja")
+    return render_template("pages/details.jinja", selected = {formData["species"], formData["profile"]})
 
 #-----------------------------------------------------------
 # confirmation page route

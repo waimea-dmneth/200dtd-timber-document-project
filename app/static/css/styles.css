@@ -1,6 +1,32 @@
 /*=====================================================
   User stylesheet - Building upon PicoCSS
 =====================================================*/
+#sideby {
+    display: flex;
+}
+
+#sidebyRestricted {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 8rem;
+}
+
+#sideby a {
+    margin-left: auto;
+    height: 10rem;
+}
+
+#submit {
+    width: 35%;
+    height: 10rem;
+    padding: 5px;
+}
+
+#pImg {
+    width: 60%;
+    height: 10rem;
+}
 
 
 /* ABOUT PAGE -------------------------------------------- */

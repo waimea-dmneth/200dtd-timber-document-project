@@ -22,9 +22,11 @@
     <h1>Consent Document Form</h1>
     <h4>Person Details</h4>
     <div>
-      <p>Timber Species</p>
-      <p>Timber Profile</p>
-      <a role="button" href="\">Go Back</a>
+      <div id="sidebyRestricted">
+        <p>{{ selected[0] }}</p>
+        <p>{{ selected[1] }}</p>
+        <a role="button" href="\" id="rightside" >Go Back</a>
+      </div>
       <form>
         <input name="name" type="text" placeholder="Your Name">
 
