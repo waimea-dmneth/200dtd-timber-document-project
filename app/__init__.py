@@ -11,7 +11,7 @@ import io, base64
 
 from app.helpers.session import init_session
 from app.helpers.db      import connect_db
-from app.helpers.errors  import init_error, not_found_error
+# from app.helpers.errors  import init_error, not_found_error
 from app.helpers.logging import init_logging
 from app.helpers.time    import init_datetime, utc_timestamp, utc_timestamp_now
 
@@ -22,10 +22,21 @@ app = Flask(__name__)
 # Configure app
 init_session(app)   # Setup a session for messages, etc.
 init_logging(app)   # Log requests
-init_error(app)     # Handle errors and exceptions
+# init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
-formData = {"species":"", "profile":""}
+formID = 0
+
+#-----------------------------------------------------------
+# form setup
+#-----------------------------------------------------------
+
+def getDBForm():
+    with connect_db() as client:
+        sql = "INSERT INTO Requests DEFAULT VALUES"
+        result = client.execute(sql,[]).rows
+        return result.id
+
 #-----------------------------------------------------------
 # Send Img
 #-----------------------------------------------------------
@@ -42,8 +53,7 @@ def profile_image(profile):
             img_str = base64.b64encode(pic_data).decode("utf-8")
             return jsonify({"image": f"data:image/png;base64,{img_str}"})
         
-        return not_found_error()
-
+        # return not_found_error()
 
 #-----------------------------------------------------------
 # Home page route
@@ -56,24 +66,39 @@ def index():
         params = []
         results = client.execute(sql, params).rows
 
-        selected = {"",""}
-        if formData["species"] or formData["profile"]: selected = {formData["species"], formData["profile"]}
-        return render_template("pages/home.jinja", profiles = results, selected = selected)
+        #--------------------------------------------\|/
+
+        sql2 = "Select species, profile FROM Requests WHERE id = ?"
+        chosen = client.execute(sql2, [formID]).rows
+
+        if not chosen.species: chosen.species = "none"
+        if not chosen.profile : chosen.profile = "none" 
+            
+        return render_template("pages/home.jinja", profiles = results, selected = chosen)
 
 
 @app.post("/pageSubmit/")
 def submit():
-    formData["species"] = request.form.get("species")
-    formData["profile"] = request.form.get("profile")
+    species = request.form.get("species")
+    profile  = request.form.get("profile")
 
-    return redirect("/details/")
+    with connect_db() as client:
+        sql = "UPDATE Requests SET species = ?, profile = ? WHERE id = ?"
+        params = [species, profile, formID]
+        results = client.execute(sql, params).rows
+
+        return redirect("/details/")
 
 #-----------------------------------------------------------
 # details page route
 #-----------------------------------------------------------
 @app.get("/details/")
 def details():
-    return render_template("pages/details.jinja", selected = {formData["species"], formData["profile"]})
+    with connect_db() as client:
+        sql2 = "Select species, profile FROM Requests WHERE id = ?"
+        chosen = client.execute(sql2, [formID]).rows
+
+        return render_template("pages/details.jinja", chosen)
 
 #-----------------------------------------------------------
 # confirmation page route
