@@ -5,7 +5,7 @@
 # BRIEF DESCRIPTION OF YOUR PROJECT HERE
 #===========================================================
 
-from flask import Flask, render_template, request, flash, redirect, send_file, jsonify
+from flask import Flask, render_template, request, flash, redirect, send_file, jsonify, session
 import html
 import io, base64
 
@@ -15,7 +15,7 @@ from app.helpers.db      import connect_db
 from app.helpers.logging import init_logging
 from app.helpers.time    import init_datetime, utc_timestamp, utc_timestamp_now
 
-from app.thing import getDBForm
+from app.dBForm import dbForm
 
 # Create the app
 app = Flask(__name__)
@@ -25,8 +25,6 @@ init_session(app)   # Setup a session for messages, etc.
 init_logging(app)   # Log requests
 # init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
-
-formID = None
 
 #-----------------------------------------------------------
 # Send Img
@@ -51,7 +49,11 @@ def profile_image(profile):
 #-----------------------------------------------------------
 @app.get("/")
 def index():
-    formID = getDBForm()
+    session.clear()
+
+    session["timer_id"] = 7
+
+    # formID = CreateDBForm()
     with connect_db() as client:
         # Get all the things from the DB
         sql = "SELECT profile FROM Profile"
@@ -60,15 +62,7 @@ def index():
 
         #--------------------------------------------\|/
 
-        sql2 = "Select species, profile FROM Requests WHERE id = ?"
-        chosen = client.execute(sql2, [formID]).rows
-        species, profile = chosen[0]  # unpack tuple
-        chosen = {
-        "species": species if species is not None else "none",
-        "profile": profile if profile is not None else "none"
-        }
-            
-        return render_template("pages/home.jinja", profiles = results, selected = chosen)
+        return render_template("pages/home.jinja", profiles = results)
 
 
 @app.post("/pageSubmit/")
@@ -77,9 +71,7 @@ def submit():
     profile  = request.form.get("profile")
 
     with connect_db() as client:
-        sql = "UPDATE Requests SET species = ?, profile = ? WHERE id = ?"
-        params = [species, profile, formID]
-        client.execute(sql, params)
+        # TODO: update this through object
 
         return redirect("/details/")
 
@@ -88,19 +80,8 @@ def submit():
 #-----------------------------------------------------------
 @app.get("/details/")
 def details():
-    with connect_db() as client:
-        if not formID: chosen = {"species" : "None", "profile" : "None"}
-        else :
-            sql2 = "Select species, profile FROM Requests WHERE id = ?"
-            chosen = client.execute(sql2, [formID]).rows
-            
-            species, profile = chosen[0]  # unpack tuple
-            chosen = {
-                "species": species if species is not None else "none",
-                "profile": profile if profile is not None else "none"
-            }
-            
-        return render_template("pages/details.jinja", selected = chosen)
+    
+     return render_template("pages/details.jinja", selected = chosen)
 
 #-----------------------------------------------------------
 # confirmation page route
