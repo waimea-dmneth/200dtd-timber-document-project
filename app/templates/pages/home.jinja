@@ -20,16 +20,16 @@
     <h1>Consent Document Form</h1>
     <p>Timber Specifications</p>
     <div>
-        <form action="/pageSubmit/" method="post">
+        <form action="/pageSubmit/timber" method="post">
             <h4>choose timber species</h4>
-            <select name="species">
+            <select name="species" required>
                 <option value="macrocarpa">macrocarpa</option>
                 <option value="walnut">walnut</option>
                 <option value="redwood">redwood</option>
                 <option value="pine">pine</option>
             </select>
             <h4>Choose timber profile</h4>
-            <select id="speciesDropdown" name="profile">
+            <select id="speciesDropdown" name="profile" required>
                 {% for profile in profiles %}
                     <option value="{{ profile.profile }}">{{ profile.profile }}</option>
                 {% endfor %}

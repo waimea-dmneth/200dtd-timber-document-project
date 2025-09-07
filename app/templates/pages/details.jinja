@@ -24,24 +24,24 @@
     <div>
       <h5> chosen timber </h5>
       <div id="sidebyRestricted">
-        <p>{{ selected.profile }}</p>
-        <p>{{ selected.species }}</p>
+        <p>{{ defaults.species }}</p>
+        <p>{{ defaults.profile }}</p>
         <a role="button" href="\" id="rightside" >Go Back</a>
       </div>
       <h4>Person Details</h4>
-      <form>
-        <input name="name" type="text" placeholder="Your Name">
+      <form action="/pageSubmit/details" method="post">
+        <input name="name" type="text" placeholder="Your Name" value="{{ defaults.name }}">
 
-        <input name="phoneNum" type="tel" placeholder="Phone Number">
+        <input name="phoneNum" type="tel" placeholder="Phone Number" value="{{ defaults.phoneNum }}">
         <input name="email" type="email" placeholder="YourEmail@email.com">
 
         <div>
           <h4>Clients Details</h4>
           <input name="cName" placeholder="clients name">
-          <input name="adress" type="text" placeholder="site address">
+          <input name="address" type="text" placeholder="site address">
         </div>
 
-        <a role="button" href="\confirmation">Submit</a>
+        <button id="submit" type="submit">submit</button>
       </form>
     </div>
 

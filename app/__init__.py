@@ -26,6 +26,8 @@ init_logging(app)   # Log requests
 # init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
+init = False
+
 #-----------------------------------------------------------
 # Send Img
 #-----------------------------------------------------------
@@ -49,11 +51,15 @@ def profile_image(profile):
 #-----------------------------------------------------------
 @app.get("/")
 def index():
-    session.clear()
+    if "species" not in session:
+        session["species"] = "None"
+        session["profile"] = "None"
+        session["name"] = "None"
+        session["phoneNum"] = "None"
+        session["email"] = "None"
+        session["cName"] = "None"
+        session["address"] = "None"
 
-    session["timer_id"] = 7
-
-    # formID = CreateDBForm()
     with connect_db() as client:
         # Get all the things from the DB
         sql = "SELECT profile FROM Profile"
@@ -65,23 +71,27 @@ def index():
         return render_template("pages/home.jinja", profiles = results)
 
 
-@app.post("/pageSubmit/")
+@app.post("/pageSubmit/timber")
 def submit():
-    species = request.form.get("species")
-    profile  = request.form.get("profile")
+    session["species"] = request.form.get("species")
+    session["profile"]  = request.form.get("profile")
+    return redirect("/details/")
 
-    with connect_db() as client:
-        # TODO: update this through object
-
-        return redirect("/details/")
-
+@app.post("/pageSubmit/details")
+def submit2():
+    session["name"] = request.form.get("name")
+    session["phoneNum"] = request.form.get("phoneNum")
+    session["email"] = request.form.get("email")
+    session["cName"] = request.form.get("cName")
+    session["address"] = request.form.get("address")
+    return redirect("/confirmation/")
 #-----------------------------------------------------------
 # details page route
 #-----------------------------------------------------------
 @app.get("/details/")
 def details():
-    
-     return render_template("pages/details.jinja", selected = chosen)
+    defaults = dict(session)
+    return render_template("pages/details.jinja", defaults = defaults)
 
 #-----------------------------------------------------------
 # confirmation page route
@@ -94,17 +104,17 @@ def confirm():
 #-----------------------------------------------------------
 # Things page route - Show all the things, and new thing form
 #-----------------------------------------------------------
-@app.get("/docs/")
-def show_all_things():
-    with connect_db() as client:
-        # Get all the things from the DB
-        sql = "SELECT id, name FROM things ORDER BY name ASC"
-        params = []
-        result = client.execute(sql, params)
-        things = result.rows
+# @app.get("/docs/")
+# def show_all_things():
+#     with connect_db() as client:
+#         # Get all the things from the DB
+#         sql = "SELECT id, name FROM things ORDER BY name ASC"
+#         params = []
+#         result = client.execute(sql, params)
+#         things = result.rows
 
-        # And show them on the page
-        return render_template("pages/docs.jinja", things=things)
+#         # And show them on the page
+#         return render_template("pages/docs.jinja", things=things)
 
 
 #-----------------------------------------------------------
