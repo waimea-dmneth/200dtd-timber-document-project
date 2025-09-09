@@ -15,57 +15,7 @@
 
 
 {% block content %}
-
-    <h1>Things...</h1>
-
-
-    <article>
-
-        <ul>
-            {% for thing in things %}
-
-                <li>
-                    <a href="/thing/{{ thing.id }}">
-                        {{ thing.name }}
-                    </a>
-                </li>
-
-            {% else %}
-
-                <p>None!</p>
-
-            {% endfor %}
-        </ul>
-
-    </article>
-
-
-    <article>
-
-        <h3>Add a New Thing...</h3>
-
-        <form action="/add" method="POST">
-
-            <input
-                type="text"
-                name="name"
-                placeholder="Name of new thing"
-                required
-            >
-
-            <input
-                type="number"
-                name="price"
-                min="0"
-                placeholder="Price in dollars"
-                required
-            >
-
-            <button>Add the Thing</button>
-
-        </form>
-
-    </article>
+ <h1> Your Documents</h1>
 
 {% endblock %}
 

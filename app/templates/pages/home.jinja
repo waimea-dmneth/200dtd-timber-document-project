@@ -22,14 +22,14 @@
     <div>
         <form action="/pageSubmit/timber" method="post">
             <h4>choose timber species</h4>
-            <select name="species" required>
+            <select id="timberDropdown" name="species" required>
                 <option value="macrocarpa">macrocarpa</option>
                 <option value="walnut">walnut</option>
                 <option value="redwood">redwood</option>
                 <option value="pine">pine</option>
             </select>
             <h4>Choose timber profile</h4>
-            <select id="speciesDropdown" name="profile" required>
+            <select id="profileDropdown" name="profile" required>
                 {% for profile in profiles %}
                     <option value="{{ profile.profile }}">{{ profile.profile }}</option>
                 {% endfor %}
@@ -38,10 +38,11 @@
                 <img src="/app/static/images/profile.png" alt="{{ profile }}" id="pImg">
 
                 <script>
-                    const dropdown = document.getElementById('speciesDropdown');
+                    const profileDropdown = document.getElementById('profileDropdown');
+                    const timberDropdown = document.getElementById('timberDropdown');
                     const img = document.getElementById('pImg');
 
-                    dropdown.addEventListener('change', () => {
+                    function setImg(dropdown) {
                         const selectedValue = dropdown.value; 
                         const profileId = "/profile_image/" + selectedValue
                         fetch(profileId)
@@ -50,7 +51,18 @@
                         img.src = data.image;
                         img.alt = selectedValue
                         });
-                        
+                    }
+
+                    if ("{{ species }}" != "None") {
+                        timberDropdown.value = "{{ species }}";
+                    }
+                    if ("{{ profile }}" != "None") {
+                        profileDropdown.value = "{{ profile }}";
+                    }
+                    
+                    setImg(profileDropdown)
+                    profileDropdown.addEventListener('change', () => {
+                       setImg(profileDropdown)
                     });
                 </script>
 

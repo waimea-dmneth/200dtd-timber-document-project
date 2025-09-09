@@ -1,8 +1,8 @@
 #===========================================================
 # YOUR PROJECT TITLE HERE
-# YOUR NAME HERE
+# David Neth
 #-----------------------------------------------------------
-# BRIEF DESCRIPTION OF YOUR PROJECT HERE
+# form for a consent document
 #===========================================================
 
 from flask import Flask, render_template, request, flash, redirect, send_file, jsonify, session
@@ -15,8 +15,6 @@ from app.helpers.db      import connect_db
 from app.helpers.logging import init_logging
 from app.helpers.time    import init_datetime, utc_timestamp, utc_timestamp_now
 
-from app.dBForm import dbForm
-
 # Create the app
 app = Flask(__name__)
 
@@ -25,8 +23,6 @@ init_session(app)   # Setup a session for messages, etc.
 init_logging(app)   # Log requests
 # init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
-
-init = False
 
 #-----------------------------------------------------------
 # Send Img
@@ -47,29 +43,8 @@ def profile_image(profile):
         # return not_found_error()
 
 #-----------------------------------------------------------
-# Home page route
+# pagesubmits to session data
 #-----------------------------------------------------------
-@app.get("/")
-def index():
-    if "species" not in session:
-        session["species"] = "None"
-        session["profile"] = "None"
-        session["name"] = "None"
-        session["phoneNum"] = "None"
-        session["email"] = "None"
-        session["cName"] = "None"
-        session["address"] = "None"
-
-    with connect_db() as client:
-        # Get all the things from the DB
-        sql = "SELECT profile FROM Profile"
-        params = []
-        results = client.execute(sql, params).rows
-
-        #--------------------------------------------\|/
-
-        return render_template("pages/home.jinja", profiles = results)
-
 
 @app.post("/pageSubmit/timber")
 def submit():
@@ -85,13 +60,64 @@ def submit2():
     session["cName"] = request.form.get("cName")
     session["address"] = request.form.get("address")
     return redirect("/confirmation/")
+
+#-----------------------------------------------------------
+# formsubmits to db
+#-----------------------------------------------------------
+
+@app.get("/submitForm/")
+def submitForm():
+    with connect_db() as client:
+        sql = "INSERT INTO Requests (species, profile) VALUES (?, ?) "
+        params = [session["species"], session["profile"]]
+        client.execute(sql, params)
+        session.clear()
+        return redirect("/")
+#-----------------------------------------------------------
+# Home page route
+#-----------------------------------------------------------
+@app.get("/")
+def index():
+    if "species" not in session:
+        session["species"] = "None"
+        session["profile"] = "None"
+        session["name"] = "None"
+        session["phoneNum"] = "None"
+        session["email"] = "None"
+        session["cName"] = "None"
+        session["address"] = "None"
+        session["sessionDocs"] = "None"
+        session["PDF"] = "None"
+
+    with connect_db() as client:
+        # Get all the things from the DB
+        sql = "SELECT profile FROM Profile"
+        params = []
+        results = client.execute(sql, params).rows
+
+        #--------------------------------------------\|/
+
+        return render_template("pages/home.jinja", profiles = results, species = session["species"], profile = session["profile"])
+
+#-----------------------------------------------------------
+# documents page route
+#-----------------------------------------------------------
+
+
+@app.get("/docs/")
+def documents():
+    return render_template("pages/docs.jinja")
+
 #-----------------------------------------------------------
 # details page route
 #-----------------------------------------------------------
+
 @app.get("/details/")
 def details():
-    defaults = dict(session)
-    return render_template("pages/details.jinja", defaults = defaults)
+    default = dict(session)
+    for k in list(default.keys()):
+        if default[k] == "None": default.pop(k)
+    return render_template("pages/details.jinja", defaults = default)
 
 #-----------------------------------------------------------
 # confirmation page route
@@ -99,82 +125,5 @@ def details():
 @app.get("/confirmation/")
 def confirm():
     return render_template("pages/confirmation.jinja")
-
-
-#-----------------------------------------------------------
-# Things page route - Show all the things, and new thing form
-#-----------------------------------------------------------
-# @app.get("/docs/")
-# def show_all_things():
-#     with connect_db() as client:
-#         # Get all the things from the DB
-#         sql = "SELECT id, name FROM things ORDER BY name ASC"
-#         params = []
-#         result = client.execute(sql, params)
-#         things = result.rows
-
-#         # And show them on the page
-#         return render_template("pages/docs.jinja", things=things)
-
-
-#-----------------------------------------------------------
-# Thing page route - Show details of a single thing
-#-----------------------------------------------------------
-# @app.get("/thing/<int:id>")
-# def show_one_thing(id):
-#     with connect_db() as client:
-#         # Get the thing details from the DB
-#         sql = "SELECT id, name, price FROM things WHERE id=?"
-#         params = [id]
-#         result = client.execute(sql, params)
-
-#         # Did we get a result?
-#         if result.rows:
-#             # yes, so show it on the page
-#             thing = result.rows[0]
-#             return render_template("pages/thing.jinja", thing=thing)
-
-#         else:
-#             # No, so show error
-#             return not_found_error()
-
-
-#-----------------------------------------------------------
-# Route for adding a thing, using data posted from a form
-#-----------------------------------------------------------
-# @app.post("/add")
-# def add_a_thing():
-#     # Get the data from the form
-#     name  = request.form.get("name")
-#     price = request.form.get("price")
-
-#     # Sanitise the text inputs
-#     name = html.escape(name)
-
-#     with connect_db() as client:
-#         # Add the thing to the DB
-#         sql = "INSERT INTO things (name, price) VALUES (?, ?)"
-#         params = [name, price]
-#         client.execute(sql, params)
-
-#         # Go back to the home page
-#         flash(f"Thing '{name}' added", "success")
-#         return redirect("/things")
-
-
-# #-----------------------------------------------------------
-# # Route for deleting a thing, Id given in the route
-# #-----------------------------------------------------------
-# @app.get("/delete/<int:id>")
-# def delete_a_thing(id):
-#     with connect_db() as client:
-#         # Delete the thing from the DB
-#         sql = "DELETE FROM things WHERE id=?"
-#         params = [id]
-#         client.execute(sql, params)
-
-#         # Go back to the home page
-#         flash("Thing deleted", "success")
-#         return redirect("/things")
 
 

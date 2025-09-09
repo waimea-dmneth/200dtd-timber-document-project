@@ -33,12 +33,12 @@
         <input name="name" type="text" placeholder="Your Name" value="{{ defaults.name }}">
 
         <input name="phoneNum" type="tel" placeholder="Phone Number" value="{{ defaults.phoneNum }}">
-        <input name="email" type="email" placeholder="YourEmail@email.com">
+        <input name="email" type="email" placeholder="YourEmail@email.com" value="{{ defaults.email }}">
 
         <div>
           <h4>Clients Details</h4>
-          <input name="cName" placeholder="clients name">
-          <input name="address" type="text" placeholder="site address">
+          <input name="cName" placeholder="clients name" value="{{ defaults.cName }}">
+          <input name="address" type="text" placeholder="site address" value="{{ defaults.address }}">
         </div>
 
         <button id="submit" type="submit">submit</button>
