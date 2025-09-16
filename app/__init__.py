@@ -29,7 +29,7 @@ init_datetime(app)  # Handle UTC dates in timestamps
 # Send Img
 #-----------------------------------------------------------
 
-@app.get("/profile_image/<string:profile>")
+@app.route('/profile_image/<string:profile>')
 def profile_image(profile):
     with connect_db() as client:
         sql = "SELECT pic FROM Profile WHERE profile = ?"
@@ -63,8 +63,8 @@ def submit2():
 @app.get("/submitForm/")
 def submitForm():
     with connect_db() as client:
-        sql = "INSERT INTO Requests (species, profile) VALUES (?, ?) "
-        params = [session["species"], session["profile"]]
+        sql = "INSERT INTO Requests (species, profile, email) VALUES (?, ?, ?) "
+        params = [session["species"], session["profile"], session["email"]]
         client.execute(sql, params)
         session.clear()
         return redirect("/")
@@ -98,10 +98,12 @@ def index():
 # documents page route
 #-----------------------------------------------------------
 
-
 @app.get("/docs/")
 def documents():
-    return render_template("pages/docs.jinja")
+    with connect_db() as client:
+        sql = "SELECT * FROM Requests"
+        params = []
+        return render_template("pages/docs.jinja", docs = client.execute(sql, params).rows)
 
 #-----------------------------------------------------------
 # details page route

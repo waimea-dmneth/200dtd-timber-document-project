@@ -15,7 +15,13 @@
 
 
 {% block content %}
- <h1> Your Documents</h1>
+  <h1> Your Documents</h1>
+  <input name="key" placeholder="passkey?" required> 
 
+  {% for doc in docs %}
+    <article>
+         <p>{{ doc.species }} {{ doc.profile }} <a role="button" id="sideby"> PDF </a></p>
+    </article>
+  {% endfor%}
 {% endblock %}
 

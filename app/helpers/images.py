@@ -19,7 +19,7 @@ def image_file(result, data_column):
         # Yes, so create a file from the data
         response = make_response(send_file(
             BytesIO(result.rows[0][data_column]),
-            mimetype="image/jpeg"
+            mimetype="image/png"
         ))
 
         # Set cache headers (e.g. cache for 1 hour)
