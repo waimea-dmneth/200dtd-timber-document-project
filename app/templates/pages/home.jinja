@@ -35,7 +35,7 @@
                 {% endfor %}
             </select>
             <div id="sideby">
-                <img src="/app/static/images/profile.png" alt="{{ profile }}" id="pImg">
+                <img src="" alt="{{ profile }}" id="pImg">
 
                 <script>
                     const profileDropdown = document.getElementById('profileDropdown');
@@ -43,12 +43,8 @@
                     const img = document.getElementById('pImg');
 
                     function setImg(dropdown) {
-                        const selectedValue = dropdown.value; 
-                        const profileId = "/profile_image/" + selectedValue
-                        fetch(profileId)
-                        .then(res => res.json())
-                        .then(data => {
-                        img.src = data.image;
+                        const selectedValue = dropdown.value
+                        img.src = "/profile_image/" + selectedValue
                         img.alt = selectedValue
                         });
                     }

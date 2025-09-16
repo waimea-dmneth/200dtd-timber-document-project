@@ -12,6 +12,7 @@ import io, base64
 from app.helpers.session import init_session
 from app.helpers.db      import connect_db
 # from app.helpers.errors  import init_error, not_found_error
+from app.helpers.images  import image_file
 from app.helpers.logging import init_logging
 from app.helpers.time    import init_datetime, utc_timestamp, utc_timestamp_now
 
@@ -34,13 +35,7 @@ def profile_image(profile):
         sql = "SELECT pic FROM Profile WHERE profile = ?"
         result = client.execute(sql, [profile])  # already a list of dict-like rows
 
-        if result:
-            row = result[0]           # first row
-            pic_data = row["pic"]     # get the blob
-            img_str = base64.b64encode(pic_data).decode("utf-8")
-            return jsonify({"image": f"data:image/png;base64,{img_str}"})
-        
-        # return not_found_error()
+        return image_file(result,"pic")
 
 #-----------------------------------------------------------
 # pagesubmits to session data
