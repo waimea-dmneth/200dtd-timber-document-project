@@ -121,6 +121,4 @@ def details():
 #-----------------------------------------------------------
 @app.get("/confirmation/")
 def confirm():
-    return render_template("pages/confirmation.jinja")
-
-
+    return render_template("pages/confirmation.jinja", species = session["species"], profile = session["profile"])
