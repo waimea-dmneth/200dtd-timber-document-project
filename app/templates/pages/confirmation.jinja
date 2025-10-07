@@ -15,6 +15,9 @@
 
 
 {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/pdfmake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/vfs_fonts.js"></script>
+<script src="/static/js/pdfDD.js" ></script>
 <h3>! Please check the details are all correct !</h3>
 <img>
 <a id="getpdf" role="button"> document PDF</a>
@@ -24,13 +27,15 @@
 <a role="button" href="\details\"> go Back </a>
 <a role="button" href="\submitForm\"> submit Form </a>
 
-    <script type="module">
-      import { makePDF } from "/static/js/pdfmake.js";
+<script >
+  document.getElementById("getpdf").addEventListener("click", () => {
+    pdfMake.createPdf(dd).open(); 
+  });
+</script>
 
-      document.getElementById("getpdf").addEventListener("click", () => {
-          makePDF();
-      });
-    </script>
+
+
+
 
 {% endblock %}
 

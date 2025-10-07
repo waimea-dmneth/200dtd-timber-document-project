@@ -5,7 +5,7 @@
 # form for a consent document
 #===========================================================
 
-from flask import Flask, render_template, request, flash, redirect, send_file, jsonify, session
+from flask import Flask, render_template, request, flash, redirect, send_file, session
 import html
 
 from app.helpers.session import init_session
@@ -61,10 +61,10 @@ def submit2():
 # formsubmits to db
 #-----------------------------------------------------------
 
-@app.get("/submitForm/")
+@app.post("/submitForm/")
 def submitForm():
     with connect_db() as client:
-        sql = "INSERT INTO Requests (species, profile, email) VALUES (?, ?, ?) "
+        sql = "INSERT INTO Requests (species, profile, email, pdf) VALUES (?, ?, ?) "
         params = [session["species"], session["profile"], session["email"]]
         client.execute(sql, params)
         session.clear()
