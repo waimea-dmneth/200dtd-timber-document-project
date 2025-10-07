@@ -17,12 +17,20 @@
 {% block content %}
 <h3>! Please check the details are all correct !</h3>
 <img>
-<a role="button"> document PDF</a>
+<a id="getpdf" role="button"> document PDF</a>
 
 <p>{{ species }}</p>
 <p>{{ profile }}</p>
 <a role="button" href="\details\"> go Back </a>
 <a role="button" href="\submitForm\"> submit Form </a>
+
+    <script type="module">
+      import { makePDF } from "/static/js/pdfmake.js";
+
+      document.getElementById("getpdf").addEventListener("click", () => {
+          makePDF();
+      });
+    </script>
 
 {% endblock %}
 

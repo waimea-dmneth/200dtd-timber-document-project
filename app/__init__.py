@@ -7,7 +7,6 @@
 
 from flask import Flask, render_template, request, flash, redirect, send_file, jsonify, session
 import html
-import io, base64
 
 from app.helpers.session import init_session
 from app.helpers.db      import connect_db
@@ -15,6 +14,8 @@ from app.helpers.db      import connect_db
 from app.helpers.images  import image_file
 from app.helpers.logging import init_logging
 from app.helpers.time    import init_datetime, utc_timestamp, utc_timestamp_now
+
+
 
 # Create the app
 app = Flask(__name__)
