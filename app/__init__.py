@@ -61,13 +61,14 @@ def submit2():
 # formsubmits to db
 #-----------------------------------------------------------
 
-@app.post("/submitForm/")
+@app.get("/submitForm/")
 def submitForm():
     with connect_db() as client:
-        sql = "INSERT INTO Requests (species, profile, email, pdf) VALUES (?, ?, ?) "
+        sql = "INSERT INTO Requests (species, profile, email) VALUES (?, ?, ?) "
         params = [session["species"], session["profile"], session["email"]]
-        client.execute(sql, params)
+        lastId = client.execute(sql, params).last_insert_rowid
         session.clear()
+        session["lastReq"] = lastId
         return redirect("/")
 #-----------------------------------------------------------
 # Home page route
@@ -83,7 +84,8 @@ def index():
         session["cName"] = "None"
         session["address"] = "None"
         session["sessionDocs"] = "None"
-        session["PDF"] = "None"
+    if "lastReq" not in session:
+        session["lastReq"] = "None"
 
     with connect_db() as client:
         # Get all the things from the DB
@@ -93,7 +95,7 @@ def index():
 
         #--------------------------------------------\|/
 
-        return render_template("pages/home.jinja", profiles = results, species = session["species"], profile = session["profile"])
+        return render_template("pages/home.jinja", profiles = results, species = session["species"], profile = session["profile"], lastPDF = session["lastReq"])
 
 #-----------------------------------------------------------
 # documents page route

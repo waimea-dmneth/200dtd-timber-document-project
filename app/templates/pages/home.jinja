@@ -16,6 +16,10 @@
 
 
 {% block content %}
+    <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/pdfmake.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/vfs_fonts.js"></script>
+    <script src="/static/js/pdfDD.js" ></script>
+
     <h2> Timber </h2>
     <h1>Consent Document Form</h1>
     <p>Timber Specifications</p>
@@ -39,16 +43,29 @@
                 <button id="submit" type="submit">submit</button>
             </div>   
 
+            <div id="hiddenDiv" hidden>
+                <a role="button" id="lastPDF"> Last PDF </a>
+            </div>
+
             <script>
                 const profileDropdown = document.getElementById('profileDropdown');
                 const timberDropdown = document.getElementById('timberDropdown');
+                const hiddenDiv = document.getElementById('hiddenDiv');
+                const pdfButton = document.getElementById("lastPDF")
                 const img = document.getElementById('pImg');
+
+             
 
                 function setImg(dropdown) {
                     const selectedValue = dropdown.value
                     const profileId = "/profile_image/" + selectedValue
                     img.src = profileId
                     img.alt = selectedValue
+                }
+                setImg(profileDropdown)
+                
+                if ("{{ lastPDF }}" != "None") {
+                    hiddenDiv.hidden = false
                 }
 
                 if ("{{ species }}" != "None") {
@@ -58,7 +75,10 @@
                     profileDropdown.value = "{{ profile }}";
                 }
                 
-                setImg(profileDropdown)
+                pdfButton.addEventListener("click", () => {
+                    pdfMake.createPdf(dd).open(); 
+                });
+                
                 profileDropdown.addEventListener('change', () => {
                     setImg(profileDropdown)
                 });

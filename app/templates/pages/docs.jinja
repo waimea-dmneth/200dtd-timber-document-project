@@ -15,12 +15,21 @@
 
 
 {% block content %}
+  <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/pdfmake.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/vfs_fonts.js"></script>
+  <script src="/static/js/pdfDD.js" ></script>
+
   <h1> Your Documents</h1>
   <input name="key" placeholder="passkey?" required> 
 
   {% for doc in docs %}
     <article>
-         <p>{{ doc.species }} {{ doc.profile }} <a role="button" id="sideby"> PDF </a></p>
+         <p>{{ doc.species }} {{ doc.profile }} <a role="button" id="button{{ doc.id  }}"> PDF </a></p>
+         <script>
+            document.getElementById("button{{ doc.id  }}").addEventListener("click", () => {
+              pdfMake.createPdf(dd).open(); 
+            });
+         </script>
     </article>
   {% endfor%}
 {% endblock %}
