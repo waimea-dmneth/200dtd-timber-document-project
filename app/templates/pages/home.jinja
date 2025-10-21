@@ -22,22 +22,28 @@
 
     <h2> Timber </h2>
     <h1>Consent Document Form</h1>
-    <p>Timber Specifications</p>
+    <p class="underline">Timber Specifications</p>
     <div>
         <form action="/pageSubmit/timber" method="post">
-            <h4>choose timber species</h4>
-            <select id="timberDropdown" name="species" required>
-                <option value="macrocarpa">macrocarpa</option>
-                <option value="walnut">walnut</option>
-                <option value="redwood">redwood</option>
-                <option value="pine">pine</option>
-            </select>
-            <h4>Choose timber profile</h4>
-            <select id="profileDropdown" name="profile" required>
-                {% for profile in profiles %}
-                    <option value="{{ profile.profile }}">{{ profile.profile }}</option>
-                {% endfor %}
-            </select>
+            <div class="spacingUnderline" >
+                <h4>choose timber species</h4>
+                <select id="timberDropdown" name="species" required>
+                    <option value="macrocarpa">macrocarpa</option>
+                    <option value="walnut">walnut</option>
+                    <option value="redwood">redwood</option>
+                    <option value="pine">pine</option>
+                </select>
+            </div>
+
+            <div class="spacingUnderline">
+                <h4>Choose timber profile</h4>
+                <select id="profileDropdown" name="profile" required>
+                    {% for profile in profiles %}
+                        <option value="{{ profile.profile }}">{{ profile.profile }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
             <div id="sideby">
                 <img src="" alt="{{ profile }}" id="pImg">
                 <button id="submit" type="submit">submit</button>

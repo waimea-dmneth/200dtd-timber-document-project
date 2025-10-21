@@ -22,13 +22,12 @@
     <h1>Consent Document Form</h1>
 
     <div>
-      <h5> chosen timber </h5>
+      <h4 class="underline">Person Details</h4>
       <div id="sidebyRestricted">
         <p>{{ defaults.species }}</p>
         <p>{{ defaults.profile }}</p>
         <a role="button" href="\" id="rightside" >Go Back</a>
       </div>
-      <h4>Person Details</h4>
       <form action="/pageSubmit/details" method="post">
         <input name="name" type="text" placeholder="Your Name" value="{{ defaults.name }}">
 
@@ -41,7 +40,7 @@
           <input name="address" type="text" placeholder="site address" value="{{ defaults.address }}">
         </div>
 
-        <button id="submit" type="submit">submit</button>
+        <button id="submit2" type="submit">submit</button>
       </form>
     </div>
 
