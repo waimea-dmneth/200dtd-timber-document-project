@@ -20,9 +20,9 @@ This project covers the development of a system that gets a form from an archite
 
 ## Project Links
 
-- [GitHub repo for the project](https://...)
+- [GitHub repo for the project](https://github.com/waimea-dmneth/200dtd-timber-document-project)
 - [Project Documentation](https://waimea-dmneth.github.io/200dtd-timber-document-project/)
-- [Live web app](https://...)
+- [Live web app](https://two00dtd-timber-document-project.onrender.com/)
 
 
 ---
