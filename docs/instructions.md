@@ -93,7 +93,6 @@ Use advanced techniques to develop a database means that, taking into account th
    - [ ] Describe the **needs of the end-users**
    - [ ] Define the **key functionality** of the proposed system
 
-
 2. You need to design the structure of the database:
    - [ ] **Tables** - at least two that are linked by a relationship
    - [ ] **Data Types** - a range of data types used
