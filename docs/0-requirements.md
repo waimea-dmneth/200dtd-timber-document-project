@@ -37,58 +37,56 @@ the consent documents for the weatherboard are unique to each architect/client a
 i need to make sure i dont make the pdf's accessible to anyone who opens the website and is only available to the people mentioned on the document.
 
 
-
 ## accessibility implications
 
 Everyone can use it on any device
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+arhictects are likley to need this while using a phone or pc
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
-
+make sure it works for both and fits well into both screen sizes while staying readable
 
 
 ## functionality implications
 
-Replace this text with a clear explanation of what the implication means.
+the website functions
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+you freely choose the options you require to create the exact document that you need
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+make sure you can make a pdf for the document that includes the options that are selectable
 
 
 
 ## Aesthetic implications
 
-Replace this text with a clear explanation of what the implication means.
+looks aesthetically pleasing
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+doesnt make someone think its the wrong site if it looks poorly made
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+make the site look clean and professional
 
 
 
 ## useability implications
 
-Replace this text with a clear explanation of what the implication means.
+its gotta be clear what things do and easy to traverse pages
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+clearly state what every input option for the form is for and clearly state where and what buttons go/do
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+buttons should have some sort of icon or text showing what it is they do. forms should state what fields do
 
