@@ -69,20 +69,6 @@ This Figma demo shows the initial layout design for the UI:
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="380" height="700" src="https://embed.figma.com/proto/tgiFFL1hWtBSQKogdKkLn1/Prototype-3-V3?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=18-2&embed-host=share" allowfullscreen></iframe>
 
-
-### Testing
-
-
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-*FIGMA IMPROVED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
-
-
----
-
 ## Refined UI Prototype
 
 Having established the layout of the UI screens, the prototype was refined visually, in terms of colour, fonts, etc.
@@ -90,29 +76,44 @@ Having established the layout of the UI screens, the prototype was refined visua
 Colors:
 
 - [Palette 1 Link](https://www.realtimecolors.com/?colors=ffffff-000000-232323-a14c1b-ffffff&fonts=Noto%20Sans%20Armenian-Noto%20Sans%20Armenian)
-- [Palette 2 Link](https://www.realtimecolors.com/?colors=ffffff-242424-b86200-413422-ffffff&fonts=Noto%20Sans%20Armenian-Noto%20Sans%20Armenian)
 
 ![Palette1](screenshots/palette1.png)
+
+This Figma demo shows the UI with palette 1 applied:
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="380" height="600" src="https://embed.figma.com/proto/FlM8Q6LMHsZ8o35ENzWCHd/Prototype-3-V4--color-?node-id=18-2&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
+
+
+- [Palette 2 Link](https://www.realtimecolors.com/?colors=000000-ffffff-636363-000000-a0431a&fonts=Inter-Inter)
+
 ![Palette2](screenshots/palette2.png)
 
-This Figma demo shows the UI with refinements applied:
+This Figma demo shows the UI with palette 2 applied:
 
-*FIGMA IMPROVED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="380" height="600" src="https://embed.figma.com/proto/nQdWs0flPkrQaNZSnDrDkR/Prototype-3-V4--color2-?node-id=18-2&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
 
-### Testing
+### color check Testing
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+the black background is more of a unproffesional and fun color to use on a simple website - client
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+went with the white one for simplicity and the people using the website are more likely to find the white one to look better
 
-*FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+### Final Testing
 
+got two different people to try the figma design out and let them mess around with no guidance.
+
+### Changes / Improvements
+
+they did not run into any problems or get stuck. doesn't mean you cant get stuck though
+they also were mostly able to understand what each option is / does.
 
 ---
 
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+this sprint allowed a staple point for the project to move forwards. It also gave a simple template as well as a refined one to work off of.
 
+- getting test times for people to test the prototype sometimes took awhile.
+- the coloration required a lot of thought to make it be cohesive with the brand logo and be aesthetically pleasing.

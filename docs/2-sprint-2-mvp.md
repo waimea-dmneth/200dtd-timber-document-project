@@ -10,9 +10,9 @@ Develop a bare-bones, working web application that provides the key functionalit
 
 ## Implemented Database Schema
 
-Replace this text with notes regarding the DB schema.
+i removed unnecessary data to avoid clogging the db with unnecessary information. such as PDF - removed to stop massive blobs being added to the DB, now the PDF just regenerates of info in the DB using a lot less space.
 
-![SCREENSHOT OF DB SCHEMA](screenshots/example.png)
+![SCREENSHOT OF DB SCHEMA](screenshots/simpleDB.png)
 
 
 ---
@@ -21,41 +21,53 @@ Replace this text with notes regarding the DB schema.
 
 The key functionality of the web app was implemented:
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE SYSTEM HERE**
+![Working Functionality](screenshots/workingWebsite.gif)
+
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing form fields updating to session data
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Making sure when the submit buttons is pressed for the first two pages it takes the inputted form data and stores it tempoarily to session data
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+I tested the wood page first, then i tested the details page.
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+the form functionally works well enough to not require unnecessary time consuming changes.
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![Working Functionality](screenshots/formtosession.gif)
+![Working Functionality](screenshots/form2session.gif)
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing DB data to Flask page
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+I checked all the values in the db for all the current profiles data then aligned that against whats showing on the page
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+the values for reference...
+
+![profile db](screenshots/profileDB.png)
+
+drop down that displays the profiles entered
+
+![profiles dd](screenshots/profilesDropdown.png)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+there was a problem where the image linked to the default profile (the first one to pop up when opening the page would display at all)
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+i implemented a quick fix that loads the default img on page startup
+
+fix being applied ...
+
+![profiles default img](screenshots/fixapplied.gif)
+
 
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing session data to database data
 
 Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
 

@@ -94,19 +94,19 @@ Use advanced techniques to develop a database means that, taking into account th
    - [ ] Define the **key functionality** of the proposed system
 
 2. You need to design the structure of the database:
-   - [ ] **Tables** - at least two that are linked by a relationship
-   - [ ] **Data Types** - a range of data types used
-   - [ ] **Key Fields** - primary keys for each table, foreign keys for relationships
-   - [ ] **Values** - auto-generation / default values as required
+   - [x] **Tables** - at least two that are linked by a relationship
+   - [x] **Data Types** - a range of data types used
+   - [x] **Key Fields** - primary keys for each table, foreign keys for relationships
+   - [x] **Values** - auto-generation / default values as required
 
 3. You should use appropriate tools and advanced techniques to organise and query the data:
-   - [ ] **Linking data in related tables** using queries or keys
-   - [ ] Writing **custom queries** to filter and/or sort data
-   - [ ] Using **logical, mathematical and/or wildcard operators** as needed
+   - [x] **Linking data in related tables** using queries or keys
+   - [x] Writing **custom queries** to filter and/or sort data
+   - [x] Using **logical, mathematical and/or wildcard operators** as needed
 
 4. You should use appropriate tools and advanced techniques to present the data:
    - [ ] Customising **presentation** of the data (not just raw data values)
-   - [ ] Using **custom forms** to add user input to the database
+   - [x] Using **custom forms** to add user input to the database
    - [ ] Setting **validation rules** for data entry
 
 5. You must apply appropriate data integrity and testing procedures:
@@ -176,24 +176,24 @@ Use advanced techniques to develop a digital media outcome means that, taking in
    - [ ] Define the **key functionality** of the proposed system
 
 2. You need to use appropriate advanced tools and techniques:
-   - [ ] You have used a suitable third-party **web back-end library** (e.g. Flask / Jinja)
-   - [ ] You have **written or customised scripts** to implement functionality (e.g. Python)
-   - [ ] You have processed data using a **combination of steps** (e.g. data obtained via DB queries, inserted into HTML templates, styled via CSS)
+   - [x] You have used a suitable third-party **web back-end library** (e.g. Flask / Jinja)
+   - [x] You have **written or customised scripts** to implement functionality (e.g. Python)
+   - [x] You have processed data using a **combination of steps** (e.g. data obtained via DB queries, inserted into HTML templates, styled via CSS)
 
 3. You must apply appropriate data integrity and testing procedures:
    - [ ] All webpage text should be checked for **accuracy** (e.g. spell-checked)
    - [ ] Any **data shown is as expected** (i.e. matches database / calculated values)
 
 4. You need to use relevant conventions for a web site:
-   - [ ] **Webpage layouts** follow accepted norms
-   - [ ] **Data entry forms** follow accepted norms
-   - [ ] **Site navigation** follows accepted norms
+   - [x] **Webpage layouts** follow accepted norms
+   - [x] **Data entry forms** follow accepted norms
+   - [x] **Site navigation** follows accepted norms
 
 
 5. You need to explain relevant implications:
-   - [ ] Identify the **implications most relevant** to your project
-   - [ ] Explain **what the implications mean** and **why each is relevant** to your project
-   - [ ] Explain **how each implication will impact your specific project** (considerations / choices / designs)
+   - [x] Identify the **implications most relevant** to your project
+   - [x] Explain **what the implications mean** and **why each is relevant** to your project
+   - [x] Explain **how each implication will impact your specific project** (considerations / choices / designs)
 
 *Note: You must satisfy **all** of the criteria above to pass*
 

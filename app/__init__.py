@@ -88,7 +88,7 @@ def index():
         session["lastReq"] = "None"
 
     with connect_db() as client:
-        # Get all the things from the DB
+        # Get profiles form DB
         sql = "SELECT profile FROM Profile"
         params = []
         results = client.execute(sql, params).rows
